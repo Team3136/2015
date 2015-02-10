@@ -24,9 +24,7 @@ public class Robot extends IterativeRobot {
 	Talon backR = new Talon(2);
 
 	Joystick joy1 = new Joystick(0);
-	
-	//test change
-	
+
 	CameraServer server;
 
     public Robot() {
@@ -52,6 +50,33 @@ public class Robot extends IterativeRobot {
 		// Claw, use Z axis scroll wheel for lift? Buttons 4 and 5 for
 		// closing/opening
 
+		
+		//Some test code for creating a gradual acceleration for the elevator's
+		//z motion. This code attempts to implement an increase in speed according
+		//to the exponential function f(x)=2^x, x <= 0
+		
+		//NOTE: STILL WORKING ON THIS, NOT ALL METHOD CALLS ARE REAL
+		/*
+		 * int final MAX_ELEVATOR_SPEED = 100; //100%
+		 * int final INCREMENT_SPEED = 35;
+		 * 
+		 * if(elevator_button.isPressed())
+		 * 		if(elevMotor.currentSpeed() == 0)
+		 * 			for(int i = 2; i <= MAX_ELEVATOR_SPEED; i^2){
+		 * 				elevMotor.set(i);
+		 * 				Thread.sleep(INCREMENT_SPEED); //adjust constant adjust acceleration
+		 * 			}
+		 * 
+		 * 			while(elevator_button.isPressed()) elevMotor.set(i);
+		 * 	
+		 * 	else if (!(elevator_button.isPressed()) && elevMotor.currentSpeed() > 0) {
+		 * 		for(int i = elevMotor.currentSpeed(); i >= 0; Math.sqrt(i))
+		 * 			elevMotor.set(i);
+		 * 			Thread.sleep(INCREMENT_SPEED);
+		 *  }
+		 *
+		 */
+		
 		
 		// Driving
 		if (joy1.getTrigger()) {
