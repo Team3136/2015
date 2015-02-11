@@ -57,34 +57,46 @@ public class Robot extends IterativeRobot {
 		
 		//NOTE: STILL WORKING ON THIS, NOT ALL METHOD CALLS ARE REAL
 		/*
+		 * Elevator_Button elevator_up_button = new Elevator_Button();
+		 * Elevator_Button elevator_down_button = new Elevator_Button();
 		 * int final MAX_ELEVATOR_SPEED = 100; //100%
 		 * int final INCREMENT_SPEED = 35;
+		 * int motSet = 2;
 		 * 
-		 * if(elevator_button.isPressed())
-		 * 		if(elevMotor.currentSpeed() == 0)
-		 * 			for(int i = 2; i <= MAX_ELEVATOR_SPEED; i^2){
-		 * 				elevMotor.set(i);
+		 * if(elevator_up_button.isPressed()){
+		 * 		if(elevMotor.currentSpeed() == 0){
+		 * 			for(; motSet <= MAX_ELEVATOR_SPEED; motSet*motSet){
+		 * 				elevMotor.set(motSet);
 		 * 				Thread.sleep(INCREMENT_SPEED); //adjust constant adjust acceleration
-		 * 			}
+		 * 		 	}
+		 * 		}
+		 * }
 		 * 
-		 * 			while(elevator_button.isPressed()) elevMotor.set(i);
+		 * while(elevator_button.isPressed()) elevMotor.set(motSet);
+		 *
 		 * 	
-		 * 	else if (!(elevator_button.isPressed()) && elevMotor.currentSpeed() > 0) {
-		 * 		for(int i = elevMotor.currentSpeed(); i >= 0; Math.sqrt(i))
-		 * 			elevMotor.set(i);
+		 * if (!(elevator_up_button.isPressed()) && elevMotor.currentSpeed() > 0) {
+		 * 		for(; motSet > 0; Math.sqrt(motSet))
+		 * 			elevMotor.set(motSet);
 		 * 			Thread.sleep(INCREMENT_SPEED);
-		 *  }
+		 * }
 		 *
 		 */
 		
 		
 		// Driving
+		
+		//If the joystick's trigger is pushed down, activate turning.
+		//The getX() method produces a value between (-1.0) and (1.0),
+		//so moving the joystick to the right and left can change the
+		//direction of turning.
 		if (joy1.getTrigger()) {
 			frontL.set(joy1.getX());
 			frontR.set(joy1.getX());
 			backL.set(joy1.getX());
 			backR.set(joy1.getX());
 		} else {
+			//When the trigger is not activated, initiate normal driving.
 			frontL.set(joy1.getY() * -1);
 			frontR.set(joy1.getX() * -1);
 			backL.set(joy1.getX());
